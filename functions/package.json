@@ -1,0 +1,36 @@
+{
+  "name": "@cold-pitch-pro/firebase-api",
+  "scripts": {
+    "lint": "echo 'Linting disabled'",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:specific": "firebase deploy --only functions:handleMessageCreated",
+    "deploy:indexes": "firebase deploy --only firestore:indexes",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "=13.4.0",
+    "firebase-functions": "=6.3.2",
+    "lodash": "=4.17.21",
+    "date-fns": "=3.3.1",
+    "googleapis": "=149.0.0",
+    "postmark": "=4.0.5",
+    "cheerio": "=1.0.0",
+    "ulid": "=3.0.0"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "=4.0.0",
+    "firebase-functions-test": "=3.4.1",
+    "typescript": "=5.8.3"
+  },
+  "private": true
+}
