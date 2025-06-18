@@ -14,14 +14,14 @@ export const receiveMessage = onRequest(async (request, response: any) => {
     const fromEmail = get(request, ['body', 'From'], undefined);
     const fromName = get(request, ['body', 'FromName'], undefined);
     const toEmail = get(request, ['body', 'To'], undefined);
-    const subject = get(request, ['body', 'Subject'], undefined);
+    const subject = get(request, ['body', 'Subject'], ' ') || ' ';
     const textBody = get(request, ['body', 'TextBody'], undefined);
     const htmlBody = get(request, ['body', 'HtmlBody'], undefined);
     const replyMessage = get(request, ['body', 'StrippedTextReply'], undefined);
     let message = textBody || htmlBody || replyMessage || '';
 
     // check for required fields
-    if (!fromEmail || !toEmail || !subject || !message) {
+    if (!fromEmail || !toEmail || !message) {
       logger.error('Missing required fields in request body');
 
       // return success to avoid retrying; data is missing from postmark
